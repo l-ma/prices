@@ -35,7 +35,7 @@ class App extends React.Component<Props, MyState> {
      */
     // this.state = { message: "" }
     this.state = {
-        message: "", formValues: [{ name: "", price: "", num: "" }]
+        message: "", formValues: [{ name: "", price: "", quantity: "" }]
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
@@ -118,7 +118,7 @@ class App extends React.Component<Props, MyState> {
 
   addFormFields() {
     this.setState(({
-      formValues: [...this.state.formValues, { name: "", price: "", num: "" }]
+      formValues: [...this.state.formValues, { name: "", price: "", quantity: "" }]
     }))
   }
 
@@ -153,8 +153,8 @@ class App extends React.Component<Props, MyState> {
               <input type="text" name="name" value={element.name || ""} onChange={e => this.handleChange(index, e)} />
               <label>Price</label>
               <input type="text" name="price" value={element.price || ""} onChange={e => this.handleChange(index, e)} />
-              <label>Number</label>
-              <input type="text" name="num" value={element.num || ""} onChange={e => this.handleChange(index, e)} />
+              <label>Quantity</label>
+              <input type="text" name="quantity" value={element.quantity || ""} onChange={e => this.handleChange(index, e)} />
               {
                 index ? 
                   <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 

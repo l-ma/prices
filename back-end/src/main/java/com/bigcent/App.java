@@ -7,6 +7,8 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.javatuples.Pair;
+import org.javatuples.Tuple;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,16 +49,19 @@ public class App extends NanoHTTPD {
         } else if (uri.equals("/calculate")) {
             // e.g., http://localhost:8080/?price=10&num=1
             try {
-                // Gson gson = new Gson();
-                // Map<String, Map<String, String>> map = gson.<Map<String, Map<String, String>>>fromJson(params, Map.class);
+                Map<String, Pair<Integer, Integer>> all = new HashMap<String, Pair<Integer,Integer>>();
                 System.out.println(params);
                 System.out.println(params.get("values"));
                 JSONArray array = new JSONArray(params.get("values"));
                 for(int i = 0; i < array.length(); i++) {
                     JSONObject object = array.getJSONObject(i);
+                    Integer price = Integer.parseInt(object.getString("price"));
+                    Integer quantity = Integer.parseInt(object.getString("quantity"));
+                    Pair<Integer, Integer> tempVals = new Pair<Integer, Integer>(price, quantity);
+                    all.put(object.getString("name"), tempVals);
                     System.out.println(object.getString("name"));
                     System.out.println(object.getString("price"));
-                    System.out.println(object.getString("num"));
+                    System.out.println(object.getString("quantity"));
                 }
                 int price1 = Integer.parseInt(params.get("price1"));
                 int num1 = Integer.parseInt(params.get("num1"));

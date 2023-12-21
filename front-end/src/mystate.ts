@@ -9,7 +9,7 @@ interface FormElements extends HTMLFormControlsCollection {
     // price2: HTMLInputElement
     // num2: HTMLInputElement
     price: HTMLInputElement
-    num: HTMLInputElement
+    quantity: HTMLInputElement
 }
 
 interface YourFormElement extends HTMLFormElement {
